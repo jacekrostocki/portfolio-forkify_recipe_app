@@ -12,6 +12,13 @@ class AddRecipeView extends View {
     super();
     this._addHandlerAddRecipeShowModal();
     this._addHandlerAddRecipeCloseModal();
+    this._initRender();
+  }
+
+  _initRender() {
+    const markup = this._generateMarkup();
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   toggleModalOveraly() {
@@ -44,22 +51,21 @@ class AddRecipeView extends View {
   }
   _generateMarkup() {
     return `
-    <button class="btn--close-modal">&times;</button>
-    <form class="upload">
+    
       <div class="upload__column">
         <h3 class="upload__heading">Recipe data</h3>
         <label>Title</label>
-        <input value="TEST55" required name="title" type="text" />
+        <input value="Your input" required name="title" type="text" />
         <label>URL</label>
-        <input value="TEST55" required name="sourceUrl" type="text" />
+        <input value="Your input" required name="sourceUrl" type="text" />
         <label>Image URL</label>
-        <input value="TEST55" required name="image" type="text" />
+        <input value="https://...." required name="image" type="text" />
         <label>Publisher</label>
-        <input value="TEST55" required name="publisher" type="text" />
+        <input value="Your input" required name="publisher" type="text" />
         <label>Prep time</label>
-        <input value="23" required name="cookingTime" type="number" />
+        <input value="" required name="cookingTime" type="number" />
         <label>Servings</label>
-        <input value="23" required name="servings" type="number" />
+        <input value="" required name="servings" type="number" />
       </div>
 
       <div class="upload__column">
@@ -105,14 +111,12 @@ class AddRecipeView extends View {
           placeholder="Format: 'Quantity,Unit,Description'"
         />
       </div>
-
       <button class="btn upload__btn">
-        <svg>
-          <use href="src/img/${icons}#icon-upload-cloud"></use>
-        </svg>
-        <span>Upload</span>
-      </button>
-    </form>`;
+      <svg>
+        <use href="${icons}#icon-upload-cloud"></use>
+      </svg>
+      <span>Upload</span>
+    </button>`;
   }
 }
 

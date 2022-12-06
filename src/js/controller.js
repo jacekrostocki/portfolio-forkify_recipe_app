@@ -114,10 +114,12 @@ const controlRecipeUpload = async function (data) {
     //close form
     setTimeout(function () {
       addRecipeView.toggleModalOveraly();
-      addRecipeView.render(model.state.recipe, true);
+      setTimeout(function () {
+        addRecipeView.render(model.state.recipe, true);
+      }, 500);
     }, 2500);
   } catch (err) {
-    console.error('BANG', err);
+    console.error('arghh...cos poszlo nie tak jak trzeba ;/', err);
     addRecipeView.errorMessage(err.message);
   }
 };
